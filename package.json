@@ -2,6 +2,12 @@
   "name": "super-stern-root",
   "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=frontend"
+  },
   "dependencies": {
     "next": "16.2.10"
   }
