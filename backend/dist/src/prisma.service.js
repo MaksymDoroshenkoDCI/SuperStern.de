@@ -5,20 +5,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PrismaService = void 0;
 const common_1 = require("@nestjs/common");
 const client_1 = require("@prisma/client");
-let PrismaService = class PrismaService extends client_1.PrismaClient {
+const extension_accelerate_1 = require("@prisma/extension-accelerate");
+const prismaClientSingleton = () => {
+    return new client_1.PrismaClient().$extends((0, extension_accelerate_1.withAccelerate)());
+};
+let PrismaService = class PrismaService {
+    client;
+    constructor() {
+        this.client = prismaClientSingleton();
+    }
+    get $() {
+        return this.client;
+    }
+    get user() {
+        return this.client.user;
+    }
+    get order() {
+        return this.client.order;
+    }
     async onModuleInit() {
-        await this.$connect();
+        await this.client.$connect();
     }
     async onModuleDestroy() {
-        await this.$disconnect();
+        await this.client.$disconnect();
     }
 };
 exports.PrismaService = PrismaService;
 exports.PrismaService = PrismaService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [])
 ], PrismaService);
 //# sourceMappingURL=prisma.service.js.map
