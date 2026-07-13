@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Image from "next/image";
 import { Star, ShieldAlert, Key, LogOut, Loader2, RefreshCw, Check, Clock, CheckCircle2, XCircle, Search, Mail, Phone, MapPin } from "lucide-react";
 
 interface Order {
@@ -32,7 +33,7 @@ export default function AdminPage() {
   const [setupMode, setSetupMode] = useState(false);
   const [setupSuccess, setSetupSuccess] = useState("");
 
-  const backendUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+  const backendUrl = "/api";
 
   useEffect(() => {
     const savedToken = localStorage.getItem("super_stern_admin_token");
@@ -141,7 +142,7 @@ export default function AdminPage() {
       case "PENDING":
         return <span className="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold inline-flex items-center"><Clock className="h-3 w-3 mr-1" /> Ausstehend</span>;
       case "CONFIRMED":
-        return <span className="bg-blue-105 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold inline-flex items-center"><Check className="h-3 w-3 mr-1" /> Bestätigt</span>;
+        return <span className="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold inline-flex items-center"><Check className="h-3 w-3 mr-1" /> Bestätigt</span>;
       case "COMPLETED":
         return <span className="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold inline-flex items-center"><CheckCircle2 className="h-3 w-3 mr-1" /> Abgeschlossen</span>;
       case "CANCELLED":
@@ -154,29 +155,35 @@ export default function AdminPage() {
   if (!token) {
     // LOGIN PANEL
     return (
-      <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center px-4 relative">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
-          <div className="text-center space-y-2">
-            <div className="bg-amber-500 p-3 rounded-full inline-block shadow-md">
-              <Star className="h-6 w-6 text-white fill-white" />
+        <div className="w-full max-w-md bg-white border border-slate-200 rounded-3xl p-8 shadow-xl space-y-6 animate-fade-in">
+          <div className="text-center space-y-3">
+            <div className="relative w-12 h-12 mx-auto">
+              <Image
+                src="/logo.png"
+                alt="Super Stern Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <h2 className="text-2xl font-black tracking-wider text-white">
-              SUPER<span className="text-amber-500">STERN</span> ADMIN
+            <h2 className="text-2xl font-black tracking-wider text-slate-800">
+              SUPER<span className="text-amber-500">STERN</span> <span className="text-xs text-slate-400 font-mono tracking-widest block mt-0.5">ADMIN</span>
             </h2>
-            <p className="text-xs text-slate-400">Verwaltungsportal für Reinigungsservice</p>
+            <p className="text-xs text-slate-500">Verwaltungsportal für Reinigungsservice</p>
           </div>
 
           {authError && (
-            <div className="bg-rose-950/30 text-rose-400 border border-rose-900/50 p-4 rounded-xl text-xs flex items-center space-x-2">
+            <div className="bg-rose-50 text-rose-600 border border-rose-100 p-4 rounded-xl text-xs flex items-center space-x-2 animate-fade-in">
               <ShieldAlert className="h-5 w-5 shrink-0" />
               <span>{authError}</span>
             </div>
           )}
 
           {setupSuccess && (
-            <div className="bg-emerald-950/30 text-emerald-400 border border-emerald-900/50 p-4 rounded-xl text-xs flex items-center space-x-2">
+            <div className="bg-emerald-50 text-emerald-700 border border-emerald-100 p-4 rounded-xl text-xs flex items-center space-x-2 animate-fade-in">
               <CheckCircle2 className="h-5 w-5 shrink-0" />
               <span>{setupSuccess}</span>
             </div>
@@ -184,19 +191,19 @@ export default function AdminPage() {
 
           <form onSubmit={setupMode ? handleSetupAdmin : handleLogin} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-400 block">E-Mail</label>
+              <label className="text-xs font-bold text-slate-700 block">E-Mail</label>
               <input
                 type="email"
                 required
                 placeholder="admin@superstern.de"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
+                className="w-full bg-white px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-emerald-500"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-400 block">Passwort</label>
+              <label className="text-xs font-bold text-slate-700 block">Passwort</label>
               <div className="relative">
                 <input
                   type="password"
@@ -204,7 +211,7 @@ export default function AdminPage() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-white px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </div>
@@ -212,7 +219,7 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loading}
-              className="gold-button w-full text-white font-bold py-3.5 rounded-full flex items-center justify-center space-x-2 text-sm shadow-lg disabled:opacity-50"
+              className="green-button w-full text-white font-bold py-3.5 rounded-full flex items-center justify-center space-x-2 text-sm shadow-md disabled:opacity-50"
             >
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -232,7 +239,7 @@ export default function AdminPage() {
                 setAuthError("");
                 setSetupSuccess("");
               }}
-              className="text-xs text-slate-500 hover:text-amber-500 underline"
+              className="text-xs text-slate-500 hover:text-emerald-600 underline font-medium"
             >
               {setupMode ? "Zurück zum Login" : "Admin-Erstkonto einrichten?"}
             </button>
@@ -246,27 +253,28 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
       {/* Top Header */}
-      <header className="bg-slate-900 text-white py-4 px-6 flex justify-between items-center shadow-md">
-        <div className="flex items-center space-x-2">
-          <div className="bg-amber-500 p-1.5 rounded-full">
-            <Star className="h-4 w-4 text-white fill-white" />
+      <header className="bg-white border-b border-slate-200 py-3.5 px-6 flex justify-between items-center shadow-xs">
+        <div className="flex items-center space-x-2.5">
+          <div className="relative w-8 h-8">
+            <Image src="/logo.png" alt="Super Stern Logo" fill className="object-contain" />
           </div>
-          <span className="font-extrabold text-lg tracking-wider">
+          <span className="font-extrabold text-lg tracking-wider text-slate-800">
             SUPER<span className="text-amber-500">STERN</span>
           </span>
-          <span className="bg-slate-800 text-amber-500 text-2xs px-2 py-0.5 rounded font-mono uppercase tracking-widest ml-2">Admin</span>
+          <span className="bg-emerald-50 text-emerald-700 text-2xs px-2 py-0.5 rounded-md font-mono font-bold uppercase tracking-widest ml-2">Admin</span>
         </div>
         <div className="flex items-center space-x-4">
           <button
             onClick={fetchOrders}
             disabled={loading}
-            className="p-2 hover:bg-slate-800 rounded-full text-slate-400 hover:text-white"
+            className="p-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors"
+            title="Aktualisieren"
           >
-            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin text-amber-500" : ""}`} />
+            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin text-emerald-600" : ""}`} />
           </button>
           <button
             onClick={handleLogout}
-            className="flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs px-3.5 py-2 rounded-xl transition-all"
+            className="flex items-center space-x-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl transition-all font-bold"
           >
             <span>Abmelden</span>
             <LogOut className="h-3.5 w-3.5" />
@@ -291,7 +299,7 @@ export default function AdminPage() {
                 placeholder="Suche..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full sm:w-60 bg-white border border-slate-200 pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:border-amber-500"
+                className="w-full sm:w-60 bg-white border border-slate-200 pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:border-emerald-500"
               />
             </div>
 
@@ -318,10 +326,10 @@ export default function AdminPage() {
         )}
 
         {/* Orders Table */}
-        <div className="bg-white border border-slate-250 rounded-2xl overflow-hidden shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
           {loading && orders.length === 0 ? (
             <div className="p-12 text-center text-slate-400 space-y-2">
-              <Loader2 className="h-8 w-8 animate-spin mx-auto text-amber-500" />
+              <Loader2 className="h-8 w-8 animate-spin mx-auto text-emerald-600" />
               <p className="text-xs">Lade Buchungen...</p>
             </div>
           ) : filteredOrders.length === 0 ? (
@@ -349,10 +357,10 @@ export default function AdminPage() {
                       <td className="p-4 space-y-1.5">
                         <span className="font-bold text-slate-800 block text-sm">{order.clientName}</span>
                         <div className="space-y-0.5 text-2xs text-slate-500">
-                          <a href={`mailto:${order.clientEmail}`} className="flex items-center hover:text-amber-600">
+                          <a href={`mailto:${order.clientEmail}`} className="flex items-center hover:text-emerald-600 font-medium">
                             <Mail className="h-3 w-3 mr-1 shrink-0" /> {order.clientEmail}
                           </a>
-                          <a href={`tel:${order.clientPhone}`} className="flex items-center hover:text-amber-600">
+                          <a href={`tel:${order.clientPhone}`} className="flex items-center hover:text-emerald-600 font-medium">
                             <Phone className="h-3 w-3 mr-1 shrink-0" /> {order.clientPhone}
                           </a>
                           <span className="flex items-start">
@@ -363,14 +371,14 @@ export default function AdminPage() {
 
                       {/* Service Type */}
                       <td className="p-4">
-                        <span className="font-semibold text-slate-700 block">{order.serviceType}</span>
+                        <span className="font-semibold text-slate-700 block text-sm">{order.serviceType}</span>
                         <span className="text-2xs text-slate-450 mt-0.5 block">Bestellt am: {new Date(order.createdAt).toLocaleDateString("de-DE")}</span>
                       </td>
 
                       {/* Size & Price */}
                       <td className="p-4 space-y-0.5">
                         <span className="font-bold text-slate-800 block">{order.spaceSize} m²</span>
-                        <span className="font-black text-amber-600 text-sm block">€{order.totalPrice.toFixed(2)}</span>
+                        <span className="font-black text-emerald-650 text-sm block">€{order.totalPrice.toFixed(2)}</span>
                       </td>
 
                       {/* Booking Date */}

@@ -1,0 +1,41 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String   // Hashed admin password
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id          String   @id @default(uuid())
+  clientName  String
+  clientEmail String
+  clientPhone String
+  address     String
+  serviceType String   // e.g., "Büroreinigung"
+  spaceSize   Float    // Square meters
+  totalPrice  Float
+  bookingDate DateTime
+  status      Status   @default(PENDING)
+  createdAt   DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Status {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}

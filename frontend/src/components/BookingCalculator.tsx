@@ -145,7 +145,7 @@ export default function BookingCalculator() {
         bookingDate: dateTime,
       };
 
-      const backendUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+      const backendUrl = "/api";
       await axios.post(`${backendUrl}/orders`, payload);
       setSuccess(true);
       setStep(3);
@@ -175,7 +175,7 @@ export default function BookingCalculator() {
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-150 overflow-hidden">
       {/* Header bar */}
-      <div className="bg-gradient-to-r from-emerald-650 to-emerald-500 py-6 px-8 text-white flex justify-between items-center border-b border-emerald-700/20 animate-fade-in">
+      <div className="bg-emerald-600 py-6 px-8 text-white flex justify-between items-center border-b border-emerald-700/20">
         <div className="flex items-center space-x-3">
           <Calculator className="h-6 w-6 text-white" />
           <h3 className="font-extrabold text-xl tracking-wide text-white">Express-Rechner & Buchung</h3>
