@@ -24,15 +24,15 @@ export default function Kontakt() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-slate-50">
       <Navbar />
 
       {/* Header Banner */}
-      <section className="bg-slate-900 text-white pt-32 pb-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent pointer-events-none"></div>
+      <section className="bg-gradient-to-r from-emerald-50 via-white to-amber-50/60 text-slate-950 pt-32 pb-16 relative border-b border-slate-100">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-3">
-          <h1 className="text-4xl font-extrabold tracking-tight">Kontakt</h1>
-          <p className="text-slate-400 max-w-2xl mx-auto text-sm">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 animate-fade-in">Kontakt</h1>
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm animate-fade-in">
             Sie haben Fragen zu unseren Services oder wünschen ein individuelles Angebot? Wir helfen Ihnen gerne weiter.
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function Kontakt() {
       {/* Contact Content */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start animate-fade-in">
             {/* Info Cards */}
             <div className="lg:col-span-5 space-y-6">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Direkter Kontakt</h2>
@@ -49,12 +49,12 @@ export default function Kontakt() {
               <div className="space-y-4">
                 {/* Phone */}
                 <div className="bg-slate-50 border border-slate-100 p-5 rounded-2xl flex items-start space-x-4">
-                  <div className="bg-amber-100 p-2.5 rounded-xl text-amber-600">
+                  <div className="bg-emerald-100 p-2.5 rounded-xl text-emerald-600">
                     <Phone className="h-6 w-6" />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-800 text-sm">Telefon (Mobil)</h4>
-                    <a href="tel:+4917645365056" className="text-slate-500 hover:text-amber-500 text-xs mt-1 block">
+                    <a href="tel:+4917645365056" className="text-slate-550 hover:text-emerald-650 text-xs mt-1 block">
                       +49 (0) 176 45365056
                     </a>
                   </div>
@@ -62,12 +62,12 @@ export default function Kontakt() {
 
                 {/* Email */}
                 <div className="bg-slate-50 border border-slate-100 p-5 rounded-2xl flex items-start space-x-4">
-                  <div className="bg-amber-100 p-2.5 rounded-xl text-amber-600">
+                  <div className="bg-emerald-100 p-2.5 rounded-xl text-emerald-600">
                     <Mail className="h-6 w-6" />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-800 text-sm">E-Mail Adresse</h4>
-                    <a href="mailto:extra.stern@yahoo.com" className="text-slate-500 hover:text-amber-500 text-xs mt-1 block">
+                    <a href="mailto:extra.stern@yahoo.com" className="text-slate-550 hover:text-emerald-650 text-xs mt-1 block">
                       extra.stern@yahoo.com
                     </a>
                   </div>
@@ -75,12 +75,12 @@ export default function Kontakt() {
 
                 {/* Address */}
                 <div className="bg-slate-50 border border-slate-100 p-5 rounded-2xl flex items-start space-x-4">
-                  <div className="bg-amber-100 p-2.5 rounded-xl text-amber-600">
+                  <div className="bg-emerald-100 p-2.5 rounded-xl text-emerald-600">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-800 text-sm">Standort</h4>
-                    <span className="text-slate-500 text-xs mt-1 block">
+                    <span className="text-slate-550 text-xs mt-1 block">
                       Wielandstraße 11a, 10629 Berlin
                     </span>
                   </div>
@@ -88,12 +88,12 @@ export default function Kontakt() {
 
                 {/* Hours */}
                 <div className="bg-slate-50 border border-slate-100 p-5 rounded-2xl flex items-start space-x-4">
-                  <div className="bg-amber-100 p-2.5 rounded-xl text-amber-600">
+                  <div className="bg-emerald-100 p-2.5 rounded-xl text-emerald-600">
                     <Clock className="h-6 w-6" />
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-800 text-sm">Bürozeiten</h4>
-                    <span className="text-slate-500 text-xs mt-1 block">
+                    <span className="text-slate-550 text-xs mt-1 block">
                       Montag – Samstag: 08:00 – 18:00 Uhr
                     </span>
                   </div>
@@ -114,7 +114,7 @@ export default function Kontakt() {
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-xs text-amber-600 underline font-semibold mt-2 hover:text-amber-500"
+                    className="text-xs text-emerald-600 underline font-semibold mt-2 hover:text-emerald-500"
                   >
                     Weitere Nachricht senden
                   </button>
@@ -129,7 +129,7 @@ export default function Kontakt() {
                       placeholder="Neshat Muharemi"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"
+                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500"
                     />
                   </div>
 
@@ -141,7 +141,7 @@ export default function Kontakt() {
                       placeholder="name@beispiel.de"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500"
+                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500"
                     />
                   </div>
 
@@ -153,13 +153,13 @@ export default function Kontakt() {
                       placeholder="Guten Tag, ich interessiere mich für eine Büroreinigung..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-amber-500 resize-none"
+                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500 resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="gold-button w-full text-white font-bold py-3.5 px-6 rounded-full flex items-center justify-center space-x-2 text-sm shadow-md"
+                    className="green-button w-full text-white font-bold py-3.5 px-6 rounded-full flex items-center justify-center space-x-2 text-sm shadow-md"
                   >
                     <span>Nachricht absenden</span>
                     <Send className="h-4 w-4" />

@@ -13,6 +13,10 @@
   --accent: #f59e0b;
   --accent-foreground: #1e293b;
   
+  --primary-green: #059669;
+  --accent-green: #10b981;
+  --green-glow: rgba(5, 150, 105, 0.15);
+  
   --muted: #64748b;
   --muted-foreground: #f1f5f9;
   
@@ -26,6 +30,8 @@
   --color-foreground: var(--foreground);
   --color-primary-gold: var(--primary);
   --color-accent-gold: var(--accent);
+  --color-primary-green: var(--primary-green);
+  --color-accent-green: var(--accent-green);
   --color-card-bg: var(--card);
   --font-sans: 'Outfit', var(--font-geist-sans), sans-serif;
 }
@@ -49,7 +55,7 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--primary-green);
 }
 
 /* Premium Animations & Glassmorphism Utility */
@@ -66,6 +72,12 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.green-gradient-text {
+  background: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .gold-button {
   background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
   box-shadow: 0 4px 14px 0 var(--gold-glow);
@@ -75,4 +87,15 @@ body {
 .gold-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px 0 rgba(217, 119, 6, 0.3);
+}
+
+.green-button {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  box-shadow: 0 4px 14px 0 var(--green-glow);
+  transition: all 0.3s ease;
+}
+
+.green-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(5, 150, 105, 0.3);
 }

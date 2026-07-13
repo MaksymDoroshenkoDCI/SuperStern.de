@@ -9,14 +9,20 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.superstern.de"),
   title: "Super Stern | Professioneller Reinigungsservice in Berlin",
   description: "Super Stern Reinigungsservice Berlin - Ihre zuverlässige Reinigungsfirma für Büroreinigung, Unterhaltsreinigung, Baureinigung, Fensterreinigung und Umzugsreinigung in Berlin Charlottenburg und Umgebung.",
   keywords: ["Reinigungsservice Berlin", "Reinigungsfirma Berlin", "Büroreinigung Berlin", "Unterhaltsreinigung", "Fensterreinigung Berlin", "Baureinigung Berlin", "Super Stern Berlin", "Wielandstraße Berlin"],
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Super Stern | Professioneller Reinigungsservice in Berlin",
     description: "Ihre zuverlässige Reinigungsfirma für Büroreinigung, Unterhaltsreinigung, Baureinigung, Fensterreinigung und Umzugsreinigung in Berlin.",
     locale: "de_DE",
     type: "website",
+    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "Super Stern Logo" }],
   },
 };
 
