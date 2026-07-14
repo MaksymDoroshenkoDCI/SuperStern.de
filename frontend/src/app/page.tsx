@@ -100,93 +100,122 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900">
-      <Navbar />
+  <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900">
+    <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 bg-gradient-to-br from-emerald-50/80 via-white to-amber-50/70 text-slate-950 overflow-hidden border-b border-slate-100">
-        {/* Background Decorative Gradient Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    {/* Hero Section */}
+    <section className="relative pt-32 pb-24 md:pt-40 md:pb-36 bg-gradient-to-br from-emerald-50/80 via-white to-amber-50/70 text-slate-950 overflow-hidden border-b border-slate-100">
+      {/* Background Decorative Gradient Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Hero text */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-full text-emerald-700 text-xs font-bold shadow-2xs">
-                <Sparkles className="h-4 w-4" />
-                <span>Professioneller Reinigungsservice Berlin</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-900">
-                Strahlende Sauberkeit für <span className="text-emerald-600">Zuhause</span> & <span className="text-amber-500">Büro</span>
-              </h1>
-
-              <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Super Stern ist Ihre Reinigungsfirma in Berlin Charlottenburg und Umgebung. Gründlich, versichert, flexibel und transparent kalkuliert. Buchen Sie Ihren Wunschtermin online in unter 2 Minuten!
-              </p>
-
-              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <a
-                  href="#calculator"
-                  className="green-button text-white font-bold text-center py-3.5 px-8 rounded-full text-base shadow-sm"
-                >
-                  Jetzt Preis berechnen
-                </a>
-                <Link
-                  href="/leistungen"
-                  className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold py-3.5 px-8 rounded-full text-center text-base transition-colors"
-                >
-                  Unsere Leistungen
-                </Link>
-              </div>
-
-              {/* Stats badges */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 text-center lg:text-left">
-                <div>
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-emerald-600">100%</span>
-                  <span className="text-xs text-slate-550 font-semibold uppercase tracking-wider">Zufriedenheit</span>
-                </div>
-                <div>
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-emerald-600">500+</span>
-                  <span className="text-xs text-slate-550 font-semibold uppercase tracking-wider">Kunden</span>
-                </div>
-                <div>
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-amber-500">Berlin</span>
-                  <span className="text-xs text-slate-550 font-semibold uppercase tracking-wider">Region</span>
-                </div>
-              </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Hero text (Left Side) */}
+          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-full text-emerald-700 text-xs font-bold shadow-2xs">
+              <Sparkles className="h-4 w-4" />
+              <span>Professioneller Reinigungsservice Berlin</span>
             </div>
 
-            {/* Hero badge / visual placeholder */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-xl relative w-full max-w-sm">
-                <div className="absolute -top-4 -right-4 bg-emerald-500 text-white font-bold px-4 py-2 rounded-2xl shadow-lg rotate-12 text-sm flex items-center space-x-1">
-                  <Star className="h-4 w-4 fill-white" />
-                  <span>Premium</span>
-                </div>
-                <h3 className="font-bold text-lg text-slate-900 mb-4">Unser Qualitätsversprechen</h3>
-                <ul className="space-y-3.5">
-                  {[
-                    "Keine versteckten Anfahrtskosten",
-                    "Streng kontrollierte & geschulte Reiniger",
-                    "Kostenlose Stornierung bis 24h vorher",
-                    "Umsatzsteuerlich absetzbar (haushaltsnah)",
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2 text-slate-600 text-sm">
-                      <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="bg-emerald-50/50 p-4 rounded-2xl mt-6 text-xs text-center border border-emerald-100 text-emerald-800">
-                  Neshat Muharemi, Geschäftsführung
-                </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-900">
+              Strahlende Sauberkeit für <span className="text-emerald-600">Zuhause</span> &amp; <span className="text-amber-500">Büro</span>
+            </h1>
+
+            <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Super Stern ist Ihre Reinigungsfirma in Berlin Charlottenburg und Umgebung. Gründlich, versichert, flexibel und transparent kalkuliert. Buchen Sie Ihren Wunschtermin online in unter 2 Minuten!
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+              <a
+                href="#calculator"
+                className="green-button text-white font-bold text-center py-3.5 px-8 rounded-full text-base shadow-sm transition-transform hover:scale-[1.02]"
+              >
+                Jetzt Preis berechnen
+              </a>
+              <Link
+                href="/leistungen"
+                className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold py-3.5 px-8 rounded-full text-center text-base transition-all hover:scale-[1.02]"
+              >
+                Unsere Leistungen
+              </Link>
+            </div>
+
+            {/* Stats badges */}
+            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 text-center lg:text-left">
+              <div>
+                <span className="block text-2xl sm:text-3xl font-extrabold text-emerald-600">100%</span>
+                <span className="text-xs text-slate-550 font-semibold uppercase tracking-wider">Zufriedenheit</span>
+              </div>
+              <div>
+                <span className="block text-2xl sm:text-3xl font-extrabold text-emerald-600">500+</span>
+                <span className="text-xs text-slate-550 font-semibold uppercase tracking-wider">Kunden</span>
+              </div>
+              <div>
+                <span className="block text-2xl sm:text-3xl font-extrabold text-amber-500">Berlin</span>
+                <span className="text-xs text-slate-550 font-semibold uppercase tracking-wider">Region</span>
               </div>
             </div>
           </div>
+
+          {/* Video & Info Card (Right Side) */}
+          <div className="lg:col-span-5 flex justify-center w-full">
+            <div className="bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden relative w-full max-w-md transition-all hover:shadow-2xl">
+              
+              {/* Premium Badge */}
+              <div className="absolute top-4 right-4 z-20 bg-emerald-500 text-white font-bold px-4 py-2 rounded-2xl shadow-lg rotate-6 text-sm flex items-center space-x-1">
+                <Star className="h-4 w-4 fill-white" />
+                <span>Premium</span>
+              </div>
+
+              {/* Video Container */}
+              <div className="relative aspect-video w-full bg-slate-900 overflow-hidden group">
+                <video
+                  className="w-full h-full object-cover"
+                  src="https://res.cloudinary.com/dh3eueciv/video/upload/v1784071675/supersternvideo_wydx3j.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Quality Guarantee Content */}
+              <div className="p-6 sm:p-8">
+                <h3 className="font-bold text-lg text-slate-900 mb-4">Unser Qualitätsversprechen</h3>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2.5 text-slate-600 text-sm">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>Keine versteckten Anfahrtskosten</span>
+                  </li>
+                  <li className="flex items-start space-x-2.5 text-slate-600 text-sm">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>Streng kontrollierte &amp; geschulte Reiniger</span>
+                  </li>
+                  <li className="flex items-start space-x-2.5 text-slate-600 text-sm">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>Kostenlose Stornierung bis 24h vorher</span>
+                  </li>
+                  <li className="flex items-start space-x-2.5 text-slate-600 text-sm">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>Umsatzsteuerlich absetzbar (haushaltsnah)</span>
+                  </li>
+                </ul>
+
+                <div className="bg-emerald-50/50 p-3.5 rounded-2xl mt-6 text-xs text-center border border-emerald-100/80 text-emerald-800 font-medium">
+                  Neshat Muharemi, Geschäftsführung
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Why Choose Us Section */}
       <section className="py-20 bg-white">
