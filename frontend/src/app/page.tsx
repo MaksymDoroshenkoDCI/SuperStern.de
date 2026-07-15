@@ -6,7 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingCalculator from "@/components/BookingCalculator";
 import CookieBanner from "@/components/CookieBanner";
-import { Sparkles, Shield, Clock, Award, CheckCircle2, ChevronDown, Star, MessageSquare, ArrowRight } from "lucide-react";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import { Sparkles, Shield, Clock, Award, CheckCircle2, ChevronDown, Star, ArrowRight } from "lucide-react";
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -77,6 +78,66 @@ export default function Home() {
       role: "Geschäftsführer, IT-Agentur",
       stars: 5,
       comment: "Büroreinigung läuft absolut reibungslos. Sehr diskret, verlässlich und sauber. Großes Lob an Neshat und sein Team!",
+    },
+    {
+      name: "Anna L.",
+      role: "Privatkundin aus Charlottenburg",
+      stars: 5,
+      comment: "Top-Qualität! Die Fensterreinigung war brillant. Alle Fenster streifenfrei und sauber. Sehr empfehlenswert und faire Preise.",
+    },
+    {
+      name: "Thomas R.",
+      role: "Geschäftsführer, Zahnarztpraxis",
+      stars: 5,
+      comment: "Die Praxis sieht immer impeccabel aus. Das Team ist zuverlässig, diskret und arbeitet effizient. Wir sind sehr glücklich mit dem Service.",
+    },
+    {
+      name: "Petra M.",
+      role: "Privatkundin aus Spandau",
+      stars: 5,
+      comment: "Nach der Renovierung war das Haus völlig verdreckt. Super Stern hat alles perfekt gereinigt. Außerdem sind die Kosten transparent.",
+    },
+    {
+      name: "Klaus W.",
+      role: "Geschäftsführer, Bürogebäude",
+      stars: 5,
+      comment: "Zuverlässig seit über 2 Jahren! Die wöchentliche Reinigung läuft immer pünktlich. Unsere Mitarbeiter fühlen sich wohl im sauberen Büro.",
+    },
+    {
+      name: "Julia S.",
+      role: "Privatkundin aus Wilmersdorf",
+      stars: 5,
+      comment: "Ich bin berufstätig und froh, dass ich Super Stern vertraue. Sie kümmern sich um alles - Wohnung, Fenster, alles perfekt!",
+    },
+    {
+      name: "Frank D.",
+      role: "Projektleiter, Bauunternehmen",
+      stars: 5,
+      comment: "Baureinigung war absolut professionell. Alle Räume besenrein hergegeben. Das ganze Team arbeitet schnell und gewissenhaft.",
+    },
+    {
+      name: "Elena K.",
+      role: "Privatkundin aus Tempelhof",
+      stars: 5,
+      comment: "Beim Umzug war Super Stern mein Retter! Schnell, gründlich und die Wohnung blitzsauber zurückgelassen. Danke!",
+    },
+    {
+      name: "Stefan B.",
+      role: "Schullleiter, Gymnasium",
+      stars: 5,
+      comment: "Die Schulreinigung ist impeccabel. Die Klassenzimmer glänzen täglich. Ein großes Vertrauen in Super Stern!",
+    },
+    {
+      name: "Heidi O.",
+      role: "Privatkundin aus Charlottenburg",
+      stars: 5,
+      comment: "Endlich Zeit für wichtigere Dinge! Super Stern erledigt alles zuverlässig. Sehr empfehlenswert!",
+    },
+    {
+      name: "Robert G.",
+      role: "Inhaber, Einzelhandelskette",
+      stars: 5,
+      comment: "Unsere Geschäftsräume sind immer tadellos. Das schafft einen professionellen Eindruck. Top Service, faire Preise!",
     },
   ];
 
@@ -318,30 +379,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((test, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-slate-200 p-8 rounded-2xl space-y-4 relative shadow-sm"
-              >
-                <div className="flex space-x-1">
-                  {[...Array(test.stars)].map((_, i) => (
-                    <Star key={i} className="h-4.5 w-4.5 text-amber-500 fill-amber-500" />
-                  ))}
-                </div>
-                <p className="text-slate-650 italic text-sm leading-relaxed">
-                  &quot;{test.comment}&quot;
-                </p>
-                <div className="pt-4 border-t border-slate-100 flex justify-between items-center text-xs">
-                  <div>
-                    <span className="font-bold text-slate-800 block">{test.name}</span>
-                    <span className="text-slate-400 mt-0.5 block">{test.role}</span>
-                  </div>
-                  <MessageSquare className="h-5 w-5 text-emerald-600/30" />
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialsCarousel testimonials={testimonials} />
         </div>
       </section>
 
