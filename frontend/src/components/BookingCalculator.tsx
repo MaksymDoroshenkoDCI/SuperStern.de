@@ -47,9 +47,9 @@ const SERVICES: Record<ServiceType, { label: string; rate: number; minPrice: num
 
 const ADDONS: Addon[] = [
   { id: "oven", name: "Backofenreinigung", price: 40.00 },
-  { id: "fridge", name: "Kühlschrankreinigung", price: 30.00 },
+  { id: "fridge", name: "Kühlschrankputz", price: 30.00 },
   { id: "balcony", name: "Balkonreinigung", price: 35.00 },
-  { id: "ironing", name: "Bügelservice (1 Std.)", price: 30.00 },
+  { id: "ironing", name: "Bügelservice    (1 Std.)", price: 30.00 },
 ];
 
 export default function BookingCalculator() {
