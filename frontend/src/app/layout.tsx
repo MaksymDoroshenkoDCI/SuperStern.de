@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import SchemaMarkup from "@/components/SchemaMarkup";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -23,6 +24,24 @@ export const metadata: Metadata = {
     locale: "de_DE",
     type: "website",
     images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "Super Stern Logo" }],
+    url: "https://www.superstern.de",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Super Stern | Reinigungsservice Berlin",
+    description: "Professionelle Reinigung in Berlin - Büro, Wohnung, Bau, Fenster",
+    images: ["/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -33,6 +52,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className="h-full scroll-smooth">
+      <head>
+        <SchemaMarkup />
+      </head>
       <body className={`${outfit.variable} font-sans min-h-full flex flex-col bg-slate-50 text-slate-900`}>
         {children}
       </body>

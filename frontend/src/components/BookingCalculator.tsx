@@ -178,7 +178,8 @@ export default function BookingCalculator() {
       <div className="bg-emerald-600 py-6 px-8 text-white flex justify-between items-center border-b border-emerald-700/20">
         <div className="flex items-center space-x-3">
           <Calculator className="h-6 w-6 text-white" />
-          <h3 className="font-extrabold text-xl tracking-wide text-white">Express-Rechner & Buchung</h3>
+          <span className="font-extrabold text-xl tracking-wider text-white hidden sm:block">SUPER<span className="text-amber-400">STERN</span></span>
+          <h3 className="font-extrabold text-lg tracking-wide text-white sm:hidden">Express-Rechner</h3>
         </div>
         <div className="flex space-x-2 text-xs">
           <span className={`h-2.5 w-8 rounded-full ${step >= 1 ? "bg-white" : "bg-white/30"}`}></span>
@@ -283,7 +284,7 @@ export default function BookingCalculator() {
                 <span className="text-3xl font-black text-slate-850">
                   €{getTotalPrice().toFixed(2)}
                 </span>
-                <span className="text-xs text-slate-400 block mt-0.5">Inkl. MwSt., Anfahrt in Berlin</span>
+                <span className="text-xs text-slate-400 block mt-0.5">Inkl. Anfahrt in Berlin exkl. MwSt.</span>
               </div>
               <button
                 type="button"
