@@ -4,23 +4,46 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertTriangle } from "lucide-react";
 
 export default function Kontakt() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
-    
-    // Process form (mock submission in UI)
-    setSubmitted(true);
-    setName("");
-    setEmail("");
-    setMessage("");
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Fehler beim Versand");
+      }
+
+      setSubmitted(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Ein Fehler ist aufgetreten");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -108,9 +131,12 @@ export default function Kontakt() {
               {submitted ? (
                 <div className="bg-emerald-50 border border-emerald-100 text-emerald-700 p-6 rounded-2xl space-y-3 text-center">
                   <CheckCircle2 className="h-10 w-10 text-emerald-600 mx-auto" />
-                  <h4 className="font-bold">Nachricht empfangen!</h4>
+                  <h4 className="font-bold">Nachricht erfolgreich versendet!</h4>
                   <p className="text-xs">
-                    Vielen Dank für Ihre Anfrage. Wir setzen uns schnellstmöglich mit Ihnen in Verbindung.
+                    Vielen Dank für Ihre Anfrage. Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich mit Ihnen in Verbindung setzen.
+                  </p>
+                  <p className="text-xs text-emerald-600">
+                    Eine Bestätigungsmail wurde an <strong>{email}</strong> gesendet.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -121,6 +147,13 @@ export default function Kontakt() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {error && (
+                    <div className="bg-rose-50 border border-rose-200 text-rose-700 p-4 rounded-xl flex items-start space-x-3">
+                      <AlertTriangle className="h-5 w-5 shrink-0 mt-0.5" />
+                      <p className="text-xs">{error}</p>
+                    </div>
+                  )}
+
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 block">Name</label>
                     <input
@@ -129,7 +162,8 @@ export default function Kontakt() {
                       placeholder="Neshat Muharemi"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500"
+                      disabled={loading}
+                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500 disabled:opacity-50"
                     />
                   </div>
 
@@ -141,7 +175,8 @@ export default function Kontakt() {
                       placeholder="name@beispiel.de"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500"
+                      disabled={loading}
+                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500 disabled:opacity-50"
                     />
                   </div>
 
@@ -153,15 +188,17 @@ export default function Kontakt() {
                       placeholder="Guten Tag, ich interessiere mich für eine Büroreinigung..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500 resize-none"
+                      disabled={loading}
+                      className="w-full bg-white px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-emerald-500 resize-none disabled:opacity-50"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="green-button w-full text-white font-bold py-3.5 px-6 rounded-full flex items-center justify-center space-x-2 text-sm shadow-md"
+                    disabled={loading}
+                    className="green-button w-full text-white font-bold py-3.5 px-6 rounded-full flex items-center justify-center space-x-2 text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span>Nachricht absenden</span>
+                    <span>{loading ? "Wird versendet..." : "Nachricht absenden"}</span>
                     <Send className="h-4 w-4" />
                   </button>
                 </form>
