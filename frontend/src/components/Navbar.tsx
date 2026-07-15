@@ -48,7 +48,7 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <span className="font-extrabold text-xl tracking-wider text-slate-800 group-hover:text-emerald-600 transition-colors hidden sm:block">
+            <span className="font-extrabold text-lg sm:text-xl tracking-wider text-slate-800 group-hover:text-emerald-600 transition-colors">
               SUPER<span className="text-amber-500">STERN</span>
             </span>
           </Link>
