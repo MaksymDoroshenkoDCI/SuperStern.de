@@ -260,14 +260,14 @@ export default function BookingCalculator() {
                       key={addon.id}
                       type="button"
                       onClick={() => handleAddonToggle(addon.id)}
-                      className={`p-3.5 rounded-xl border text-left flex justify-between items-center transition-all ${
+                      className={`p-3.5 rounded-xl border text-left flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 transition-all ${
                         isSelected
                           ? "border-emerald-500 bg-emerald-50/40 text-emerald-700"
                           : "border-slate-200 text-slate-700 hover:bg-slate-50"
                       }`}
                     >
                       <span className="text-sm font-semibold">{addon.name}</span>
-                      <span className="text-xs font-bold text-emerald-650">
+                      <span className="text-xs font-bold text-emerald-650 whitespace-nowrap">
                         + €{addon.price}
                       </span>
                     </button>

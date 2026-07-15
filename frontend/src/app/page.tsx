@@ -29,7 +29,7 @@ export default function Home() {
       desc: "Unser Team besteht aus festangestellten, gründlich geschulten und zuverlässigen Reinigungskräften.",
     },
     {
-      icon: <Clock className="h-6 w-6 text-amber-500" />,
+      icon: <Clock className="h-6 w-6 text-emerald-600" />,
       bg: "bg-amber-100/75",
       title: "Flexible Termine",
       desc: "Egal ob wöchentlich, zweiwöchentlich oder einmalig. Wir richten uns ganz nach Ihrem Terminplan.",
