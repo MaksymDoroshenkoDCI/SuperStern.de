@@ -76,6 +76,13 @@ export async function POST(request: Request) {
 
     // Send email via Nodemailer
     try {
+      console.log('📧 EMAIL DEBUG: Starting email sending process');
+      console.log('SMTP_HOST:', process.env.SMTP_HOST ? '✓ SET' : '❌ MISSING (using default: smtp.gmail.com)');
+      console.log('SMTP_PORT:', process.env.SMTP_PORT ? `✓ SET (${process.env.SMTP_PORT})` : '❌ MISSING (using default: 587)');
+      console.log('SMTP_USER:', process.env.SMTP_USER ? '✓ SET' : '❌ MISSING (using default)');
+      console.log('SMTP_PASS:', process.env.SMTP_PASS ? '✓ SET' : '❌ MISSING - THIS IS THE PROBLEM!');
+      console.log('NOTIFICATION_EMAIL:', process.env.NOTIFICATION_EMAIL ? `✓ SET (${process.env.NOTIFICATION_EMAIL})` : '❌ MISSING (using default)');
+
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST || 'smtp.gmail.com',
         port: Number(process.env.SMTP_PORT) || 587,
@@ -105,17 +112,12 @@ export async function POST(request: Request) {
         `,
       };
 
-      if (process.env.SMTP_PASS) {
-        await transporter.sendMail(mailOptions);
-        console.log(`Email successfully sent for order ${order.id}`);
-      } else {
-        console.log('--- MOCK EMAIL TRIGGERED (SMTP_PASS not set) ---');
-        console.log(`To: ${mailOptions.to}`);
-        console.log(`Subject: ${mailOptions.subject}`);
-        console.log('-----------------------------');
-      }
+      console.log('📧 EMAIL DEBUG: Attempting to send email...');
+      const info = await transporter.sendMail(mailOptions);
+      console.log('✅ EMAIL SENT successfully for order', order.id);
+      console.log('Response:', info);
     } catch (emailErr) {
-      console.error('Failed to send email notification:', emailErr);
+      console.error('❌ EMAIL ERROR: Failed to send email notification:', emailErr);
     }
 
     return NextResponse.json(order, { status: 201 });
