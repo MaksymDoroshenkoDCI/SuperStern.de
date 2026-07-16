@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+  verification: {
+    google: "nYviU81VeFj2jQ6zQKKGNaN8VF1MFL6fzdgieSkkmXs",
+  },
   openGraph: {
     title: "Super Stern | Professioneller Reinigungsservice in Berlin",
     description: "Ihre zuverlässige Reinigungsfirma für Büroreinigung, Unterhaltsreinigung, Baureinigung, Fensterreinigung und Umzugsreinigung in Berlin.",
