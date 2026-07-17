@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   verification: {
-    google: "nYviU81VeFj2jQ6zQKKGNaN8VF1MFL6fzdgieSkkmXs",
+    google: "5dZXkaq_HO3CT8fdimdFQ-JtkJ_UHk0ts0_TWRNzhsE",
   },
   openGraph: {
     title: "Super Stern | Professioneller Reinigungsservice in Berlin",
